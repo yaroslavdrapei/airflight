@@ -55,6 +55,7 @@ int Airplane::refund(const string &id) {
 
         ticket->setStatus(false);
         ticket->setUsername("");
+        ticket->setId("");
 
         return ticket->getPrice();
     }
@@ -66,10 +67,13 @@ int Airplane::refund(const string &id) {
 Ticket *Airplane::book(const string &seatNumber, const string &username) {
     string id = seatNumber + flightNumber + date;
 
+    if (!check(seatNumber)) return nullptr;
+
     Ticket *ticket = seats[seatNumber];
 
     ticket->setStatus(true);
     ticket->setUsername(username);
+    ticket->setId(id);
 
     return ticket;
 }
