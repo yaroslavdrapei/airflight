@@ -1,7 +1,0 @@
-# ninja log v5
-22	491	7471752430407292	CMakeFiles/booking.dir/Ticket.cpp.obj	fc547a68c7a76188
-21	448	7478514621408256	CMakeFiles/booking.dir/main.cpp.obj	85e209d5785a4ec7
-26	728	7471752432764349	CMakeFiles/booking.dir/Airplane.cpp.obj	e3e42818c21308bf
-28	769	7471708101036766	CMakeFiles/booking.dir/InputParser.cpp.obj	b9e86580da6e52f8
-448	726	7478514624152926	booking.exe	74697405625e27da
-29	274	7478531188742026	build.ninja	200575804511171f

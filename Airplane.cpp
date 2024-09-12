@@ -3,18 +3,22 @@
 
 using namespace std;
 
-Airplane::Airplane(const string& flightNumber, const string& date, int numberOfRows)  : _date(date), _flightNumber(flightNumber) {}
+Airplane::Airplane(const string& flightNumber, const string& date, int numberOfRows)  : date(date), flightNumber(flightNumber) {}
 
-string Airplane::getDate() { return _date; }
+string Airplane::getDate() const {
+    return date;
+}
 
-string Airplane::getFlightNumber() { return _flightNumber; };
+string Airplane::getFlightNumber() const {
+    return flightNumber;
+};
 
 bool Airplane::check(const string& seatNumber) {
-    if (_seats.find(seatNumber) == _seats.end()) {
+    if (seats.find(seatNumber) == seats.end()) {
         return false;
     }
 
-    if (_seats[seatNumber]) {
+    if (seats[seatNumber]) {
         return false;
     }
 
@@ -23,5 +27,5 @@ bool Airplane::check(const string& seatNumber) {
 
 bool Airplane::refund(const string& seatNumber) {}
 
-bool Airplane::book(const string& seatNumber) {}
+Ticket* Airplane::book(const string& seatNumber) {}
 

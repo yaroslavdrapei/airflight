@@ -2,18 +2,19 @@
 
 #include <iostream>
 #include <unordered_map>
+#include "Ticket.h"
 using namespace std;
 
 class Airplane {
 private:
-    unordered_map<string, bool> _seats;
-    string _flightNumber;
-    string _date;
+    unordered_map<string, Ticket*> seats;
+    string flightNumber;
+    string date;
 public:
-    string getDate();
-    string getFlightNumber();
+    string getDate() const;
+    string getFlightNumber() const;
     Airplane(const string &flightNumber, const string& date, int numberOfRows); // todo: add prices to seats somehow
-    bool book(const string& seatNumber); // todo: change return type to ticket later
+    Ticket* book(const string& seatNumber); // todo: change return type to ticket later
     bool refund(const string& seatNumber);
     bool check(const string& seatNumber);
 };
