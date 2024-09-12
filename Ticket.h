@@ -8,9 +8,11 @@ private:
     string id;
     int price;
     string date;
-    bool status;
+    bool status=false;
     string flightNumber;
 public:
+    Ticket(const string& username, const string& id, int price, const string& date, bool status, const string& flightNumber);
+
     string getUsername() const;
     string getId() const;
     int getPrice() const;

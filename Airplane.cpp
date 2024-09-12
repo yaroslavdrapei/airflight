@@ -18,14 +18,20 @@ bool Airplane::check(const string& seatNumber) {
         return false;
     }
 
-    if (seats[seatNumber]) {
+    if (seats[seatNumber]->getStatus()) {
         return false;
     }
 
     return true;
 }
 
-bool Airplane::refund(const string& seatNumber) {}
+bool Airplane::refund(const string& id) {
 
-Ticket* Airplane::book(const string& seatNumber) {}
+}
+
+Ticket* Airplane::book(const string& seatNumber, const string& username) {
+    Ticket* ticket = new Ticket(username, seatNumber+flightNumber+date, 50, date, true, flightNumber);
+    seats[seatNumber] = ticket;
+    return ticket;
+}
 
