@@ -57,6 +57,31 @@ int main() {
                 cout << "You cannot return the ticket that is not booked or does not exist" << endl;
             }
         }
+        else if (command == "check") {
+            string date = parsedInput.params[0];
+            string flightNumber = parsedInput.params[1];
+
+            for (auto airplane: *airplanes) {
+                if ((airplane->getFlightNumber()) != flightNumber || (airplane->getDate() != date)) continue;
+
+                vector<Ticket*> availableTickets = airplane->getAvailableTickets();
+
+                if (availableTickets.empty()) {
+                    cout << "No tickets available" << endl;
+                    break;
+                }
+
+                for (auto ticket : availableTickets) {
+                    cout << ticket->getSeatNumber() << " " << ticket->getPrice() << "$";
+                    if (ticket != availableTickets.back()) {
+                        cout << ", ";
+                    }
+                }
+
+                cout << endl;
+                break;
+            }
+        }
         else {
             cout << "No such command. Try again" << endl;
         }

@@ -14,7 +14,7 @@ Airplane::Airplane(const string &date, const string &flightNumber, int numberOfC
             string seatNumber = generateSeatNumber(row, col);
             int price = calcPrice(seatNumber);
 
-            seats[seatNumber] = new Ticket("", "", price, date, false, flightNumber);
+            seats[seatNumber] = new Ticket("", "", price, date, false, flightNumber, seatNumber);
         }
     }
 }
@@ -100,4 +100,15 @@ int Airplane::calcPrice(const string &seatNumber) {
 string Airplane::generateSeatNumber(int row, int col) {
     int code = 65 + col;
     return to_string(row+1) + string{(char)code};
+}
+
+vector<Ticket*> Airplane::getAvailableTickets() {
+    vector<Ticket*> availableTickets;
+    for (auto& seat : seats) {
+        Ticket* ticket = seat.second;
+        if (!ticket->getStatus()) {
+            availableTickets.push_back(ticket);
+        }
+    }
+    return availableTickets;
 }

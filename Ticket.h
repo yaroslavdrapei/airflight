@@ -12,7 +12,7 @@ private:
     string flightNumber;
     string seatNumber;
 public:
-    Ticket(const string& username, const string& id, int price, const string& date, bool status, const string& flightNumber);
+    Ticket(const string& username, const string& id, int price, const string& date, bool status, const string& flightNumber, const string& seatNumber);
 
     string getUsername() const;
     string getId() const;

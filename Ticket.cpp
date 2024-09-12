@@ -1,7 +1,7 @@
 #include "Ticket.h"
 
-Ticket::Ticket(const string& username, const string& id, int price, const string& date, bool status, const string& flightNumber)
-        : username(username), id(id), price(price), date(date), status(status), flightNumber(flightNumber) {}
+Ticket::Ticket(const string& username, const string& id, int price, const string& date, bool status, const string& flightNumber, const string& seatNumber)
+        : username(username), id(id), price(price), date(date), status(status), flightNumber(flightNumber), seatNumber(seatNumber) {}
 
 string Ticket::getUsername() const {
     return username;
