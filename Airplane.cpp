@@ -1,9 +1,23 @@
-#include <iostream>
 #include "Airplane.h"
 
 using namespace std;
 
-Airplane::Airplane(const string& flightNumber, const string& date, int numberOfRows)  : date(date), flightNumber(flightNumber) {}
+Airplane::Airplane(const string &date, const string &flightNumber, int numberOfColumns,
+                   vector<RowPricing> rowPrices) : date(date), flightNumber(flightNumber),
+                                                   rowPrices(rowPrices) {
+
+    // here i'm filling in seats with not booked tickets
+    int numberOfRows = rowPrices.back().end;
+
+    for (int row = 0; row < numberOfRows; row++) {
+        for (int col = 0; col < numberOfColumns; col++) {
+            string seatNumber = generateSeatNumber(row, col);
+            int price = calcPrice(seatNumber);
+
+            seats[seatNumber] = new Ticket("", "", price, date, false, flightNumber);
+        }
+    }
+}
 
 string Airplane::getDate() const {
     return date;
@@ -13,7 +27,15 @@ string Airplane::getFlightNumber() const {
     return flightNumber;
 };
 
-bool Airplane::check(const string& seatNumber) {
+void Airplane::setDate(const string &newDate) {
+    date = newDate;
+}
+
+void Airplane::setFlightNumber(const string &newFlightNumber) {
+    flightNumber = newFlightNumber;
+}
+
+bool Airplane::check(const string &seatNumber) {
     if (seats.find(seatNumber) == seats.end()) {
         return false;
     }
@@ -25,13 +47,47 @@ bool Airplane::check(const string& seatNumber) {
     return true;
 }
 
-bool Airplane::refund(const string& id) {
+int Airplane::refund(const string &id) {
+    for (auto &seat: seats) {
+        Ticket* ticket = seat.second;
 
+        if (ticket->getId() != id) continue;
+
+        ticket->setStatus(false);
+        ticket->setUsername("");
+
+        return ticket->getPrice();
+    }
+
+    cout << "Ticket was not booked!" << endl;
+    return 0;
 }
 
-Ticket* Airplane::book(const string& seatNumber, const string& username) {
-    Ticket* ticket = new Ticket(username, seatNumber+flightNumber+date, 50, date, true, flightNumber);
-    seats[seatNumber] = ticket;
+Ticket *Airplane::book(const string &seatNumber, const string &username) {
+    string id = seatNumber + flightNumber + date;
+
+    Ticket *ticket = seats[seatNumber];
+
+    ticket->setStatus(true);
+    ticket->setUsername(username);
+
     return ticket;
 }
 
+int Airplane::calcPrice(const string &seatNumber) {
+    int row = seatNumber[0] - '0';
+
+    for (auto &rowPrice: rowPrices) {
+        if ((rowPrice.start <= row) && (row <= rowPrice.end)) {
+            return rowPrice.price;
+        }
+    }
+
+    cout << "Row not found! Means seat is free!" << endl;
+    return 0;
+}
+
+string Airplane::generateSeatNumber(int row, int col) {
+    int code = 65 + col;
+    return to_string(row+1) + string{(char)code};
+}

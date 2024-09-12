@@ -27,6 +27,10 @@ string Ticket::getFlightNumber() const {
     return flightNumber;
 }
 
+string Ticket::getSeatNumber() const {
+    return seatNumber;
+}
+
 void Ticket::setUsername(const string& newUsername) {
     username = newUsername;
 }
@@ -50,3 +54,13 @@ void Ticket::setStatus(bool newStatus) {
 void Ticket::setFlightNumber(const string& newFlightNumber) {
     flightNumber = newFlightNumber;
 }
+
+void Ticket::setSeatNumber(const string& newSeatNumber) {
+    seatNumber = newSeatNumber;
+}
+
+//void Ticket::reset() {
+//    username = "";
+//    id = "";
+//    status = false;
+//}
