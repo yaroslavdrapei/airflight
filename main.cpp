@@ -3,11 +3,12 @@
 #include "ConfigFileParser.h"
 #include "UserInputParser.h"
 #include "CommandParams.h"
+
 using namespace std;
 
 int main() {
-    vector<Airplane*>* airplanes = ConfigFileParser::parseFile(R"(E:\KSE\year-2\oop\booking\config.txt)");
-    unordered_map<string, Ticket*> bookedTickets;
+    vector<Airplane *> *airplanes = ConfigFileParser::parseFile(R"(E:\KSE\year-2\oop\booking\config.txt)");
+    unordered_map<string, Ticket *> bookedTickets;
 
     string userInput;
     cout << "<";
@@ -23,9 +24,9 @@ int main() {
             string seatNumber = parsedInput.params[2];
             string username = parsedInput.params[3];
 
-            for (auto airplane : *airplanes) {
+            for (auto airplane: *airplanes) {
                 if ((airplane->getFlightNumber()) != flightNumber || (airplane->getDate() != date)) continue;
-                Ticket* ticket = airplane->book(seatNumber, username);
+                Ticket *ticket = airplane->book(seatNumber, username);
 
                 if (ticket == nullptr) {
                     cout << "Booking failed. You either chose taken seat or such a seat does not exist" << endl;
@@ -36,7 +37,27 @@ int main() {
 
                 cout << ">Confirmed with ID " << ticket->getId() << endl;
             }
-        } else {
+        }
+        else if (command == "return") {
+            string id = parsedInput.params[0];
+
+            if (bookedTickets.find(id) != bookedTickets.end()) {
+                Ticket* ticket = bookedTickets[id];
+
+                int price = ticket->getPrice();
+                string username = ticket->getUsername();
+
+                ticket->reset();
+
+                bookedTickets.erase(id);
+
+                cout << ">Confirmed " << price << "$ refund for " << username << endl;
+            }
+            else {
+                cout << "You cannot return the ticket that is not booked or does not exist" << endl;
+            }
+        }
+        else {
             cout << "No such command. Try again" << endl;
         }
 

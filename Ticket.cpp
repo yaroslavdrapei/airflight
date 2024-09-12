@@ -59,8 +59,8 @@ void Ticket::setSeatNumber(const string& newSeatNumber) {
     seatNumber = newSeatNumber;
 }
 
-//void Ticket::reset() {
-//    username = "";
-//    id = "";
-//    status = false;
-//}
+void Ticket::reset() {
+    username = "";
+    id = "";
+    status = false;
+}

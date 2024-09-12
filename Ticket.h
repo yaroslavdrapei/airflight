@@ -30,5 +30,5 @@ public:
     void setFlightNumber(const string& newFlightNumber);
     void setSeatNumber(const string& seatNumber);
 
-//    void reset();
+    void reset();
 };

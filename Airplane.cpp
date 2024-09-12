@@ -53,9 +53,7 @@ int Airplane::refund(const string &id) {
 
         if (ticket->getId() != id) continue;
 
-        ticket->setStatus(false);
-        ticket->setUsername("");
-        ticket->setId("");
+        ticket->reset();
 
         return ticket->getPrice();
     }
@@ -79,7 +77,15 @@ Ticket *Airplane::book(const string &seatNumber, const string &username) {
 }
 
 int Airplane::calcPrice(const string &seatNumber) {
-    int row = seatNumber[0] - '0';
+//    int row = seatNumber[0]  - '0';
+    string rowString;
+
+    for (auto chr : seatNumber) {
+        if (!isdigit(chr)) break;
+        rowString += chr;
+    }
+
+    int row = stoi(rowString);
 
     for (auto &rowPrice: rowPrices) {
         if ((rowPrice.start <= row) && (row <= rowPrice.end)) {
