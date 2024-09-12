@@ -3,4 +3,6 @@ project(booking)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(booking main.cpp)
+add_executable(booking main.cpp
+        Airplane.h
+        Airplane.cpp)
