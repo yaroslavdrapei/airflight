@@ -1,3 +1,0 @@
-E:/KSE/year-2/oop/booking/cmake-build-debug/CMakeFiles/booking.dir
-E:/KSE/year-2/oop/booking/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/KSE/year-2/oop/booking/cmake-build-debug/CMakeFiles/rebuild_cache.dir
