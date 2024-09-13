@@ -79,6 +79,24 @@ build CMakeFiles/booking.dir/UserInputParser.cpp.obj: CXX_COMPILER__booking_unsc
   OBJECT_DIR = CMakeFiles\booking.dir
   OBJECT_FILE_DIR = CMakeFiles\booking.dir
 
+build CMakeFiles/booking.dir/BookingCli.cpp.obj: CXX_COMPILER__booking_unscanned_Debug E$:/KSE/year-2/oop/booking/BookingCli.cpp || cmake_object_order_depends_target_booking
+  DEP_FILE = CMakeFiles\booking.dir\BookingCli.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\booking.dir
+  OBJECT_FILE_DIR = CMakeFiles\booking.dir
+
+build CMakeFiles/booking.dir/AirplanesManager.cpp.obj: CXX_COMPILER__booking_unscanned_Debug E$:/KSE/year-2/oop/booking/AirplanesManager.cpp || cmake_object_order_depends_target_booking
+  DEP_FILE = CMakeFiles\booking.dir\AirplanesManager.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\booking.dir
+  OBJECT_FILE_DIR = CMakeFiles\booking.dir
+
+build CMakeFiles/booking.dir/TicketsManager.cpp.obj: CXX_COMPILER__booking_unscanned_Debug E$:/KSE/year-2/oop/booking/TicketsManager.cpp || cmake_object_order_depends_target_booking
+  DEP_FILE = CMakeFiles\booking.dir\TicketsManager.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\booking.dir
+  OBJECT_FILE_DIR = CMakeFiles\booking.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target booking
@@ -87,7 +105,7 @@ build CMakeFiles/booking.dir/UserInputParser.cpp.obj: CXX_COMPILER__booking_unsc
 #############################################
 # Link the executable booking.exe
 
-build booking.exe: CXX_EXECUTABLE_LINKER__booking_Debug CMakeFiles/booking.dir/main.cpp.obj CMakeFiles/booking.dir/Airplane.cpp.obj CMakeFiles/booking.dir/ConfigFileParser.cpp.obj CMakeFiles/booking.dir/Ticket.cpp.obj CMakeFiles/booking.dir/UserInputParser.cpp.obj
+build booking.exe: CXX_EXECUTABLE_LINKER__booking_Debug CMakeFiles/booking.dir/main.cpp.obj CMakeFiles/booking.dir/Airplane.cpp.obj CMakeFiles/booking.dir/ConfigFileParser.cpp.obj CMakeFiles/booking.dir/Ticket.cpp.obj CMakeFiles/booking.dir/UserInputParser.cpp.obj CMakeFiles/booking.dir/BookingCli.cpp.obj CMakeFiles/booking.dir/AirplanesManager.cpp.obj CMakeFiles/booking.dir/TicketsManager.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\booking.dir

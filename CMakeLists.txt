@@ -7,4 +7,9 @@ add_executable(booking main.cpp
         Airplane.cpp
         ConfigFileParser.cpp
         Ticket.cpp
-        UserInputParser.cpp)
+        UserInputParser.cpp
+        BookingCli.h
+        BookingCli.cpp
+        AirplanesManager.cpp
+        TicketsManager.h
+        TicketsManager.cpp)
