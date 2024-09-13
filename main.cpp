@@ -7,8 +7,8 @@
 using namespace std;
 
 int main() {
-    vector<Airplane *> *airplanes = ConfigFileParser::parseFile(R"(E:\KSE\year-2\oop\booking\config.txt)");
-    unordered_map<string, Ticket *> bookedTickets;
+    vector<Airplane*> airplanes = ConfigFileParser::parseFile(R"(E:\KSE\year-2\oop\booking\config.txt)");
+    unordered_map<string, Ticket*> bookedTickets;
 
     string userInput;
     cout << "<";
@@ -24,7 +24,7 @@ int main() {
             string seatNumber = parsedInput.params[2];
             string username = parsedInput.params[3];
 
-            for (auto airplane: *airplanes) {
+            for (auto airplane: airplanes) {
                 if ((airplane->getFlightNumber()) != flightNumber || (airplane->getDate() != date)) continue;
                 Ticket *ticket = airplane->book(seatNumber, username);
 
@@ -61,10 +61,10 @@ int main() {
             string date = parsedInput.params[0];
             string flightNumber = parsedInput.params[1];
 
-            for (auto airplane: *airplanes) {
+            for (auto airplane: airplanes) {
                 if ((airplane->getFlightNumber()) != flightNumber || (airplane->getDate() != date)) continue;
 
-                vector<Ticket*> availableTickets = airplane->getAvailableTickets();
+                vector<Ticket*> availableTickets = airplane->getTicketsByStatus(false);
 
                 if (availableTickets.empty()) {
                     cout << "No tickets available" << endl;
@@ -80,6 +80,49 @@ int main() {
 
                 cout << endl;
                 break;
+            }
+        }
+        else if (command == "view") {
+            string option = parsedInput.params[0];
+            if (option == "username") {
+                string username = parsedInput.params[1];
+                int index = 1;
+                for (auto& pair : bookedTickets) {
+                    Ticket* ticket = pair.second;
+                    if (ticket->getUsername() == username) {
+                        cout << index << ". " << "Flight " << ticket->getFlightNumber() << ", ";
+                        cout << ticket->getDate() << ", " << "seat " << ticket->getSeatNumber() << ", ";
+                        cout << "price " << ticket->getPrice() << "$" << endl;
+                        index++;
+                    }
+                }
+            }
+            else if (option == "flight") {
+                string date = parsedInput.params[1];
+                string flightNumber = parsedInput.params[2];
+
+                for (auto airplane: airplanes) {
+                    if ((airplane->getFlightNumber()) != flightNumber || (airplane->getDate() != date)) continue;
+
+                    vector<Ticket*> tickets = airplane->getTicketsByStatus(true);
+
+                    for (auto& ticket : tickets) {
+                        cout << ticket->getSeatNumber() << " " << ticket->getUsername() << " " << ticket->getPrice() << "$";
+                        if (ticket != tickets.back()) {
+                            cout << ", ";
+                        }
+                    }
+
+                    cout << endl;
+
+                    break;
+                }
+            }
+            else { //by id
+                Ticket* ticket = bookedTickets[option];
+                cout << "Flight " << ticket->getFlightNumber() << ", " << ticket->getDate() << ", ";
+                cout << "seat " << ticket->getSeatNumber() << ", " << "price " << ticket->getPrice();
+                cout << "$, " << ticket->getUsername() << endl;
             }
         }
         else {

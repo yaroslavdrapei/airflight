@@ -3,8 +3,8 @@
 #include "RowPricing.h"
 using namespace std;
 
-vector<Airplane*>* ConfigFileParser::parseFile(const string& filename) {
-    vector<Airplane*>* airplanes = new vector<Airplane*>;
+vector<Airplane*> ConfigFileParser::parseFile(const string& filename) {
+    vector<Airplane*> airplanes;
 
     ifstream file(filename);
 
@@ -39,7 +39,7 @@ vector<Airplane*>* ConfigFileParser::parseFile(const string& filename) {
         }
 
         Airplane* airplane = new Airplane(date, flightNumber, numberOfColumns, rowPrices);
-        airplanes->push_back(airplane);  // Store the pointer to the airplane object
+        airplanes.push_back(airplane);  // Store the pointer to the airplane object
     }
 
     file.close();

@@ -8,5 +8,5 @@ using namespace std;
 
 class ConfigFileParser {
 public:
-    static vector<Airplane*>* parseFile(const string& filename);
+    static vector<Airplane*> parseFile(const string& filename);
 };

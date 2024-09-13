@@ -102,13 +102,13 @@ string Airplane::generateSeatNumber(int row, int col) {
     return to_string(row+1) + string{(char)code};
 }
 
-vector<Ticket*> Airplane::getAvailableTickets() {
-    vector<Ticket*> availableTickets;
+vector<Ticket*> Airplane::getTicketsByStatus(bool status) {
+    vector<Ticket*> tickets;
     for (auto& seat : seats) {
         Ticket* ticket = seat.second;
-        if (!ticket->getStatus()) {
-            availableTickets.push_back(ticket);
+        if (ticket->getStatus() == status) {
+            tickets.push_back(ticket);
         }
     }
-    return availableTickets;
+    return tickets;
 }

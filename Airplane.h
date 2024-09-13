@@ -27,5 +27,5 @@ public:
     bool check(const string& seatNumber);
     int calcPrice(const string& seatNumber);
     string generateSeatNumber(int row, int col);
-    vector<Ticket*> getAvailableTickets();
+    vector<Ticket*> getTicketsByStatus(bool status);
 };
