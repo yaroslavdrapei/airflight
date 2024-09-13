@@ -1,4 +1,5 @@
 #include "Airplane.h"
+#include <functional>
 
 using namespace std;
 
@@ -63,7 +64,8 @@ int Airplane::refund(const string &id) {
 }
 
 Ticket *Airplane::book(const string &seatNumber, const string &username) {
-    string id = seatNumber + flightNumber + date;
+    hash<string> hashFunction;
+    string id = to_string(hashFunction(seatNumber + flightNumber + date));
 
     if (!check(seatNumber)) return nullptr;
 
@@ -77,7 +79,6 @@ Ticket *Airplane::book(const string &seatNumber, const string &username) {
 }
 
 int Airplane::calcPrice(const string &seatNumber) {
-//    int row = seatNumber[0]  - '0';
     string rowString;
 
     for (auto chr : seatNumber) {
