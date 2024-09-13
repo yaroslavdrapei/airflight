@@ -1,4 +1,4 @@
-#include "UserInputParser.h"
+#include "../include/UserInputParser.h"
 using namespace std;
 
 CommandParams UserInputParser::parse(const std::string &userInput) {

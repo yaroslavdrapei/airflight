@@ -1,6 +1,6 @@
-#include "ConfigFileParser.h"
-#include "Airplane.h"
-#include "RowPricing.h"
+#include "../include/ConfigFileParser.h"
+#include "../include/Airplane.h"
+#include "../include/RowPricing.h"
 using namespace std;
 
 vector<Airplane*> ConfigFileParser::parseFile(const string& filename) {

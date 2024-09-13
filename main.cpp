@@ -1,12 +1,12 @@
 #include <iostream>
 #include <unordered_map>
-#include "ConfigFileParser.h"
-#include "UserInputParser.h"
-#include "CommandParams.h"
-#include "AirplanesManager.h"
-#include "TicketsManager.h"
-#include "Airplane.h"
-#include "BookingCli.h"
+#include "include/ConfigFileParser.h"
+#include "include/UserInputParser.h"
+#include "include/CommandParams.h"
+#include "include/AirplanesManager.h"
+#include "include/TicketsManager.h"
+#include "include/Airplane.h"
+#include "include/BookingCli.h"
 
 using namespace std;
 

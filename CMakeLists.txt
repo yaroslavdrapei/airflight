@@ -4,12 +4,12 @@ project(booking)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(booking main.cpp
-        Airplane.cpp
-        ConfigFileParser.cpp
-        Ticket.cpp
-        UserInputParser.cpp
-        BookingCli.h
-        BookingCli.cpp
-        AirplanesManager.cpp
-        TicketsManager.h
-        TicketsManager.cpp)
+        src/Airplane.cpp
+        src/ConfigFileParser.cpp
+        src/Ticket.cpp
+        src/UserInputParser.cpp
+        include/BookingCli.h
+        src/BookingCli.cpp
+        src/AirplanesManager.cpp
+        include/TicketsManager.h
+        src/TicketsManager.cpp)
