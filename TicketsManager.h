@@ -12,6 +12,7 @@ public:
 
     TicketsManager();
     TicketsManager(unordered_map<string, Ticket*> tickets);
+    ~TicketsManager();
 
     Ticket* findById(const string& id);
     vector<Ticket*> findByUsername(const string& username);

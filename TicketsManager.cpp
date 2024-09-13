@@ -2,6 +2,12 @@
 
 TicketsManager::TicketsManager() {}
 
+TicketsManager::~TicketsManager() {
+    for (auto& ticket : tickets) {
+        delete ticket.second;
+    }
+}
+
 TicketsManager::TicketsManager(unordered_map<string, Ticket*> tickets) : tickets(tickets) {}
 
 Ticket* TicketsManager::findById(const string &id) {

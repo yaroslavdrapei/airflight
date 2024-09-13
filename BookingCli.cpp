@@ -40,13 +40,13 @@ void BookingCli::viewByDateAndFlight(const string &date, const string &flightNum
     cout << endl;
 }
 
-BookingCli::BookingCli(AirplanesManager airplanesManager, TicketsManager bookedTicketsManager) : airplanesManager(airplanesManager), bookedTicketsManager(bookedTicketsManager) {}
+BookingCli::BookingCli(AirplanesManager& airplanesManager, TicketsManager& bookedTicketsManager) : airplanesManager(airplanesManager), bookedTicketsManager(bookedTicketsManager) {}
 
 vector<string> BookingCli::getParams() {
     return params;
 }
 
-void BookingCli::setParams(CommandParams newParams) {
+void BookingCli::setParams(const CommandParams& newParams) {
     params = newParams.params;
 }
 

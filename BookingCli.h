@@ -18,10 +18,10 @@ private:
     void viewByUsername(const string& username);
     void viewByDateAndFlight(const string& date, const string& flightNumber);
 public:
-    BookingCli(AirplanesManager airplanesManager, TicketsManager bookedTicketsManager);
+    BookingCli(AirplanesManager& airplanesManager, TicketsManager& bookedTicketsManager);
 
     vector<string> getParams();
-    void setParams(CommandParams newParams);
+    void setParams(const CommandParams& newParams);
 
     void checkCommand();
     void bookCommand();
